@@ -10,8 +10,19 @@ $("#submit").on("click", function (e) {
 
   const $movieName = $(".title").val();
   const $movieRating = $(".rating").val();
-  const $listID = $("ul").length;
+
+  const deleteButton = $("<button/>")
+                          .text("delete")
+                          .on("click", deleteList)
 
   $("ul").append($("<li>"));
-  $("li").attr("id", $listID);
+
+  $("li:last-child")
+    .text(`Title: ${$movieName} Rating: ${$movieRating}`)
+    .append(deleteButton);
+
 });
+
+function deleteList() {
+  $("li").remove();
+}
